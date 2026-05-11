@@ -3,7 +3,6 @@
 # Shows 3-day forecast with Morning, Noon, Evening, Night
 
 # No location = wttr.in auto-detects via IP
-
 WEATHER=$(curl -s "wttr.in/?format=j1" 2>/dev/null)
 
 if [ -z "$WEATHER" ]; then
