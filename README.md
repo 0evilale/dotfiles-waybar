@@ -23,6 +23,10 @@ Configuración de Waybar para Hyprland, estilo minimalista con íconos Nerd Font
 ### Derecha
 - CPU | Temperatura | RAM | Red | Audio In | Audio Out | Cava | Tray | Reloj | Clima
 
+### Screenshots
+
+![Screenshot](screenshot/screenshot-waybar.png)
+
 ## Características
 
 - **Visualizador de audio**: `waybar-cava` v0.15.0 con captura PipeWire (headset G435)
