@@ -1,0 +1,16 @@
+*.png
+*.jpg
+*.bak
+*.pre-*
+*.minimal
+*.dark
+*.light
+*.cjbassi*
+rose-pine.css
+colors.css
+reload.sh
+wittr.sh
+window_pill.py
+theme-toggle.sh
+backup-mocha/
+bkp/

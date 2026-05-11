@@ -1,0 +1,245 @@
+[
+    {
+        // MAIN BAR //
+        "layer": "top",
+        "position": "top",
+        "name": "main",
+        "height": 28,
+        "reload_style_on_change": true,
+
+        "margin-top": 0,
+        "margin-left": 0,
+        "margin-right": 0,
+
+        "modules-left": [
+            "custom/arch",
+            "hyprland/workspaces",
+            "hyprland/submap",
+            "hyprland/window",
+        ],
+
+        "modules-right": [
+            "custom/spacer1",
+            "cpu",
+            "temperature",
+            "memory#ram",
+            "network#info",
+            "custom/spacer2",
+            "pulseaudio#input",
+            "pulseaudio#output",
+            "cava",
+            "custom/spacer3",
+            "tray",
+            "custom/spacer4",
+            "clock",
+            "custom/weather",
+        ],
+
+        // Modules
+        "cava": {
+            "framerate": 30,
+            "autosens": 0,
+            "sensitivity": 30,
+            "bars": 16,
+            "lower_cutoff_freq": 20,
+            "higher_cutoff_freq": 20000,
+            "hide_on_silence": true,
+            "method": "pipewire",
+            "source": "auto",
+            "stereo": false,
+            "reverse": false,
+            "bar_delimiter": 0,
+            "monstercat": false,
+            "waves": false,
+            "noise_reduction": 0.2,
+            "input_delay": 2,
+            "sleep_timer": 5,
+            "format-icons": ["▁", "▂", "▃", "▄", "▅"],
+        },
+
+        "custom/weather": {
+            "format": "{}",
+            "tooltip": true,
+            "interval": 60,
+            "exec": "~/.config/waybar/scripts/weather.sh",
+            "return-type": "json",
+        },
+
+        "group/traym": {
+            "orientation": "horizontal",
+            "drawer": {},
+            "modules": ["custom/trayicon", "tray"],
+        },
+
+        "clock": {
+            "interval": 1,
+            "format": " {:%H:%M:%S    %a %d.%m}",
+            "tooltip-format": "{calendar}",
+            "calendar": {
+                "weeks-pos": "right",
+                "mode": "month",
+                "format": {
+                    "months": "<span color='#cba6f7'><b>{}</b></span>",
+                    "days": "<span color='#cdd6f4'><b>{}</b></span>",
+                    "weeks": "<span color='#94e2d5'> W{}</span>",
+                    "weekdays": "<span color='#f9e2af'><b>{}</b></span>",
+                    "today": "<span color='#f5e0dc'><b><u>{}</u></b></span>",
+                },
+            },
+            "timezone": "America/Monterrey",
+        },
+
+        "cpu": {
+            "interval": 4,
+            "min-length": 6,
+            "format": " {usage}%",
+            "states": {
+                "warning": 80,
+                "critical": 95,
+            },
+        },
+
+        "temperature": {
+            "critical-threshold": 90,
+            "interval": 4,
+            "hwmon-path": "/sys/class/hwmon/hwmon3/temp1_input",
+            "format": "{icon} {temperatureC}°",
+            "format-icons": ["", "", "", "", ""],
+            "tooltip": false,
+        },
+
+        "memory#ram": {
+            "interval": 4,
+            "format": " {percentage}%",
+            "states": {
+                "warning": 80,
+                "critical": 95,
+            },
+            "tooltip": "{}",
+            "tooltip-format": "{used}/{total} GiB",
+        },
+
+        "network#info": {
+            "interval": 2,
+            "interface": "eno1",
+            "format": "󱘖  Offline",
+            "format-wifi": "{icon} {bandwidthDownBits}",
+            "format-ethernet": "󰈀 {bandwidthDownBits}",
+            "min-length": 11,
+            "tooltip": "{}",
+            "tooltip-format-wifi": "{ifname}\n{essid}\n{signalStrength}% \n{frequency} GHz\n󰇚 {bandwidthDownBits}\n󰕒 {bandwidthUpBits}",
+            "tooltip-format-ethernet": "{ifname}\n󰇚 {bandwidthDownBits} \n󰕒 {bandwidthUpBits}",
+            "format-icons": ["󰤫", "󰤟", "󰤢", "󰤥", "󰤨"],
+            "states": {
+                "normal": 25,
+            },
+        },
+
+        "hyprland/submap": {
+            "always-on": true,
+            "default-submap": "",
+            "format": "{}",
+            "tooltip": false,
+        },
+
+        "hyprland/window": {
+            "format": "{title}",
+            "max-length": 48,
+            "tooltip": false,
+            "icon": true,
+            "icon-size": 18,
+        },
+
+        "hyprland/workspaces": {
+            "disable-scroll-wraparound": true,
+            "smooth-scrolling-threshold": 4,
+            "enable-bar-scroll": true,
+            "format": "{icon}",
+            "show-special": true,
+            "special-visible-only": false,
+            "format-icons": {
+                "1": "1",
+                "2": "2",
+                "3": "3",
+                "4": "4",
+                "5": "5",
+                "6": "6",
+                "7": "7",
+                "magic": "",
+                "zellij": "",
+                "10": "󰊴",
+                "lock": "",
+            },
+        },
+
+        "pulseaudio#output": {
+            "format": "{icon} {volume}%",
+            "format-bluetooth": "{icon} {volume}%",
+            "format-source-muted": "{volume}",
+            "format-icons": {
+                "headphone": "",
+                "hands-free": "",
+                "headset": "",
+                "phone": "",
+                "portable": "",
+                "car": "",
+                "default": ["", ""],
+            },
+            "on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
+            "on-click-right": "kitty -e wiremix",
+            "on-scroll-down": "wpctl set-volume @DEFAULT_AUDIO_SINK@ 2%+",
+            "on-scroll-up": "wpctl set-volume @DEFAULT_AUDIO_SINK@ 2%-",
+            "tooltip": true,
+            "scroll-step": 4,
+        },
+
+        "pulseaudio#input": {
+            "format": " {format_source}%",
+            "format-source": "{volume}",
+            "format-source-muted": "{volume}",
+            "on-scroll-down": "wpctl set-volume @DEFAULT_AUDIO_SOURCE@ 2%+",
+            "on-scroll-up": "wpctl set-volume @DEFAULT_AUDIO_SOURCE@ 2%-",
+            "max-volume": "100",
+            "on-click": "pactl set-source-mute @DEFAULT_SOURCE@ toggle",
+            "on-click-right": "kitty -e wiremix",
+            "tooltip-format": "{source_desc}",
+            "scroll-step": 4,
+        },
+
+        "tray": {
+            "icon-size": 18,
+            "spacing": 8,
+            "max-items": 1,
+        },
+
+        "custom/spacer1": {
+            "format": "",
+            "tooltip": false,
+        },
+
+        "custom/spacer2": {
+            "format": "",
+            "tooltip": false,
+        },
+
+        "custom/spacer3": {
+            "format": "",
+            "tooltip": false,
+        },
+
+        "custom/spacer4": {
+            "format": "",
+            "tooltip": false,
+        },
+
+        "custom/trayicon": {
+            "format": "ᗧ ",
+            "tooltip": false,
+        },
+
+        "custom/arch": {
+            "format": "",
+            "tooltip": false,
+        },
+    },
+]
