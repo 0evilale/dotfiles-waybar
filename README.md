@@ -55,7 +55,7 @@ El script `scripts/weather.sh` consulta `wttr.in` y muestra:
 
 ```bash
 # Clonar
-git clone git@github.com:0evilale/dotfiles-waybar.git ~/.config/waybar
+git clone https://github.com/0evilale/dotfiles-waybar.git /tmp/repo && cp -rf /tmp/repo/. ~/.config/waybar && rm -rf /tmp/repo && omarchy-restart-waybar
 
 # Instalar waybar-cava (AUR)
 yay -S waybar-cava

@@ -157,10 +157,6 @@
     background: @background2;
 }
 
-#waybar.main #clock {
-    border-radius: 0pt 6pt 6pt 0pt;
-}
-
 #waybar.main #window {
     color: @window;
     box-shadow: none;
