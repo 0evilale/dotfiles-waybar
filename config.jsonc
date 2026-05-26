@@ -27,34 +27,22 @@
       "custom/spacer2",
       "pulseaudio#input",
       "pulseaudio#output",
-      "cava",
+      "custom/cava",
       "custom/spacer3",
       "tray",
       "custom/spacer4",
-      "clock",
       "custom/weather",
+      "custom/spacer3",
+      "clock",
     ],
 
     // Modules
-    "cava": {
-      "framerate": 30,
-      "autosens": 0,
-      "sensitivity": 30,
-      "bars": 16,
-      "lower_cutoff_freq": 20,
-      "higher_cutoff_freq": 20000,
-      "hide_on_silence": true,
-      "method": "pipewire",
-      "source": "auto",
-      "stereo": false,
-      "reverse": false,
-      "bar_delimiter": 0,
-      "monstercat": false,
-      "waves": false,
-      "noise_reduction": 0.2,
-      "input_delay": 2,
-      "sleep_timer": 5,
-      "format-icons": ["▁", "▂", "▃", "▄", "▅"],
+    "custom/cava": {
+      "exec": "~/.config/waybar/scripts/cava-waybar.sh",
+      "return-type": "json",
+      "format": "{}",
+      "tooltip": true,
+      "restart-interval": 1,
     },
 
     "custom/weather": {
@@ -73,8 +61,8 @@
 
     "clock": {
       "interval": 1,
-      "format": " {:%H:%M:%S    %a %d.%m}",
-      "tooltip-format": "{calendar}",
+      "format": " {:%I:%M %p    %a %b %d}",
+      "tooltip-format": "<big>{calendar}</big>",
       "calendar": {
         "weeks-pos": "right",
         "mode": "month",

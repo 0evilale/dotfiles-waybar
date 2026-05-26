@@ -150,11 +150,15 @@
     background: @background2;
 }
 
-#waybar.main #custom-weather,
+#waybar.main #custom-weather {
+    color: @window;
+    background: @background2;
+}
+
 #waybar.main #clock,
 #custom-timer {
     color: @date;
-    background: @background2;
+    background: @background1;
 }
 
 #waybar.main #window {
@@ -471,6 +475,14 @@ tooltip {
     border: 3px solid @caution;
     border-radius: 8px;
     color: #cdd6f4;
+}
+
+#custom-cava {
+    font-size: 12px;
+    padding-left: 4pt;
+    padding-right: 4pt;
+    color: @audio;
+    background: @background2;
 }
 
 /* }}} */
