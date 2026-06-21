@@ -1,8 +1,8 @@
 [
   {
     // MAIN BAR //
-    "layer": "bottom",
-    "position": "bottom",
+    "layer": "top",
+    "position": "top",
     "name": "main",
     "height": 28,
     "reload_style_on_change": true,
