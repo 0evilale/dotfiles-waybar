@@ -21,9 +21,7 @@
       "memory#ram",
       "group/sys-drawer",
       "custom/spacer2",
-      "pulseaudio#input",
-      "pulseaudio#output",
-      "custom/cava",
+      "group/pulseaudio-drawer",
       "custom/spacer3",
       "tray",
       "custom/spacer4",
@@ -69,6 +67,15 @@
         "children-class": "sys-group-item"
       },
       "modules": ["custom/sys-icon", "temperature", "network"]
+    },
+
+    "group/pulseaudio-drawer": {
+      "orientation": "inherit",
+      "drawer": {
+        "transition-duration": 600,
+        "children-class": "pulseaudio-group-item"
+      },
+      "modules": ["custom/cava", "pulseaudio#output", "pulseaudio#input"]
     },
 
     "custom/weather": {

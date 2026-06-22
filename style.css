@@ -487,7 +487,8 @@ tooltip {
     background: @background1;
 }
 
-.sys-group-item {
+.sys-group-item,
+.pulseaudio-group-item {
     padding-left: 4pt;
     padding-right: 4pt;
 }
