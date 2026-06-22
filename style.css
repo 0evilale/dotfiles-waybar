@@ -168,19 +168,19 @@
     font-style: italic;
 }
 
-#waybar.main #network.info {
+#waybar.main #network.ethernet,
+#waybar.main #network.wifi {
     padding-right: 4pt;
     padding-left: 4pt;
-    color: @caution;
 }
 
-#waybar.main #network.info.wifi.normal,
-#waybar.main #network.info.ethernet {
+#waybar.main #network.wifi.normal,
+#waybar.main #network.ethernet {
     color: @performance;
     padding-right: 4pt;
 }
 
-#waybar.main #network.info.wifi {
+#waybar.main #network.wifi {
     color: @warning;
     padding-right: 4pt;
 }

@@ -45,11 +45,11 @@
       "tooltip": false,
     },
 
-    "network#info": {
+    "network": {
       "interval": 3,
       "format": "{icon}",
       "format-wifi": "{icon}",
-      "format-ethernet": "{icon}",
+      "format-ethernet": "󰀂",
       "format-disconnected": "󰤮",
       "tooltip-format-wifi": "{essid}\n{signalStrength}%\n󰇚 {bandwidthDownBits}\n󰕒 {bandwidthUpBits}",
       "tooltip-format-ethernet": "{ifname}\n󰇚 {bandwidthDownBits} \n󰕒 {bandwidthUpBits}",
@@ -68,7 +68,7 @@
         "transition-duration": 600,
         "children-class": "sys-group-item"
       },
-      "modules": ["custom/sys-icon", "temperature", "network#info"]
+      "modules": ["custom/sys-icon", "temperature", "network"]
     },
 
     "custom/weather": {
@@ -144,23 +144,6 @@
       },
       "tooltip": "{}",
       "tooltip-format": "{used}/{total} GiB",
-    },
-    "network#info": {
-      "interval": 60,
-      "interface": "eno1",
-      "format": "{icon}",
-      "format-wifi": "{icon}",
-      "format-ethernet": "{icon}",
-      "format-disconnected": "{icon}",
-      "tooltip-format-wifi": "{essid}\n{signalStrength}%\n󰇚 {bandwidthDownBits}\n󰕒 {bandwidthUpBits}",
-      "tooltip-format-ethernet": "{ifname}\n󰇚 {bandwidthDownBits} \n󰕒 {bandwidthUpBits}",
-      "format-icons": [
-        "󰤫",
-        "󰤟",
-        "󰤢",
-        "󰤥",
-        "󰤨"
-      ],
     },
     "hyprland/submap": {
       "always-on": true,
