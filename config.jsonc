@@ -46,12 +46,11 @@
     },
 
     "network#info": {
-      "interval": 60,
-      "interface": "eno1",
+      "interval": 3,
       "format": "{icon}",
       "format-wifi": "{icon}",
       "format-ethernet": "{icon}",
-      "format-disconnected": "{icon}",
+      "format-disconnected": "󰤮",
       "tooltip-format-wifi": "{essid}\n{signalStrength}%\n󰇚 {bandwidthDownBits}\n󰕒 {bandwidthUpBits}",
       "tooltip-format-ethernet": "{ifname}\n󰇚 {bandwidthDownBits} \n󰕒 {bandwidthUpBits}",
       "format-icons": [
@@ -89,7 +88,7 @@
     },
     "clock": {
       "interval": 1,
-      "format": " {:%I:%M %p    %a %b %d}",
+      "format": " {:%I:%M %p}",
       "tooltip-format": "<tt><small>{calendar}</small></tt>",
       "calendar": {
         "mode": "year",
