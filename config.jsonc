@@ -4,26 +4,22 @@
     "layer": "top",
     "position": "top",
     "name": "main",
-    "height": 28,
+    "height": 16,
     "reload_style_on_change": true,
-
     "margin-top": 0,
     "margin-left": 0,
     "margin-right": 0,
-
     "modules-left": [
       "custom/arch",
       "hyprland/workspaces",
       "hyprland/submap",
       "hyprland/window",
     ],
-
     "modules-right": [
       "custom/spacer1",
       "cpu",
-      "temperature",
       "memory#ram",
-      "network#info",
+      "group/sys-drawer",
       "custom/spacer2",
       "pulseaudio#input",
       "pulseaudio#output",
@@ -31,18 +27,49 @@
       "custom/spacer3",
       "tray",
       "custom/spacer4",
-      "custom/weather",
-      "custom/spacer3",
       "clock",
+      "custom/spacer7",
+      "custom/weather",
     ],
-
     // Modules
     "custom/cava": {
       "exec": "~/.config/waybar/scripts/cava-waybar.sh",
       "return-type": "json",
       "format": "{}",
-      "tooltip": true,
+      "tooltip": false,
       "restart-interval": 1,
+    },
+
+    "custom/sys-icon": {
+      "format": "\uf100",
+      "tooltip": false,
+    },
+
+    "network#info": {
+      "interval": 60,
+      "interface": "eno1",
+      "format": "{icon}",
+      "format-wifi": "{icon}",
+      "format-ethernet": "{icon}",
+      "format-disconnected": "{icon}",
+      "tooltip-format-wifi": "{essid}\n{signalStrength}%\n󰇚 {bandwidthDownBits}\n󰕒 {bandwidthUpBits}",
+      "tooltip-format-ethernet": "{ifname}\n󰇚 {bandwidthDownBits} \n󰕒 {bandwidthUpBits}",
+      "format-icons": [
+        "󰤫",
+        "󰤟",
+        "󰤢",
+        "󰤥",
+        "󰤨"
+      ],
+    },
+
+    "group/sys-drawer": {
+      "orientation": "inherit",
+      "drawer": {
+        "transition-duration": 600,
+        "children-class": "sys-group-item"
+      },
+      "modules": ["custom/sys-icon", "temperature", "network#info"]
     },
 
     "custom/weather": {
@@ -52,31 +79,40 @@
       "exec": "~/.config/waybar/scripts/weather.sh",
       "return-type": "json",
     },
-
     "group/traym": {
       "orientation": "horizontal",
       "drawer": {},
-      "modules": ["custom/trayicon", "tray"],
+      "modules": [
+        "custom/trayicon",
+        "tray"
+      ],
     },
-
     "clock": {
       "interval": 1,
       "format": " {:%I:%M %p    %a %b %d}",
-      "tooltip-format": "<big>{calendar}</big>",
+      "tooltip-format": "<tt><small>{calendar}</small></tt>",
       "calendar": {
+        "mode": "year",
+        "mode-mon-col": 3,
         "weeks-pos": "right",
-        "mode": "month",
+        "on-scroll": 1,
         "format": {
-          "months": "<span color='#cba6f7'><b>{}</b></span>",
-          "days": "<span color='#cdd6f4'><b>{}</b></span>",
-          "weeks": "<span color='#94e2d5'> W{}</span>",
-          "weekdays": "<span color='#f9e2af'><b>{}</b></span>",
-          "today": "<span color='#f5e0dc'><b><u>{}</u></b></span>",
-        },
+          "months": "<span color='#ffead3'><b>{}</b></span>",
+          "days": "<span color='#ecc6d9'><b>{}</b></span>",
+          "weeks": "<span color='#99ffdd'><b>W{}</b></span>",
+          "weekdays": "<span color='#ffcc66'><b>{}</b></span>",
+          "today": "<span color='#ff6699'><b><u>{}</u></b></span>"
+        }
+      },
+      "actions": {
+        "on-click-right": "mode",
+        "on-scroll-up": "tz_up",
+        "on-scroll-down": "tz_down",
+        "on-scroll-up": "shift_up",
+        "on-scroll-down": "shift_down"
       },
       "timezone": "America/Monterrey",
     },
-
     "cpu": {
       "interval": 4,
       "min-length": 6,
@@ -86,16 +122,20 @@
         "critical": 95,
       },
     },
-
     "temperature": {
       "critical-threshold": 90,
       "interval": 4,
       "hwmon-path": "/sys/class/hwmon/hwmon3/temp1_input",
       "format": "{icon} {temperatureC}°",
-      "format-icons": ["", "", "", "", ""],
+      "format-icons": [
+        "",
+        "",
+        "",
+        "",
+        ""
+      ],
       "tooltip": false,
     },
-
     "memory#ram": {
       "interval": 4,
       "format": " {percentage}%",
@@ -106,30 +146,29 @@
       "tooltip": "{}",
       "tooltip-format": "{used}/{total} GiB",
     },
-
     "network#info": {
-      "interval": 2,
+      "interval": 60,
       "interface": "eno1",
-      "format": "󱘖  Offline",
-      "format-wifi": "{icon} {bandwidthDownBits}",
-      "format-ethernet": "󰈀 {bandwidthDownBits}",
-      "min-length": 11,
-      "tooltip": "{}",
-      "tooltip-format-wifi": "{ifname}\n{essid}\n{signalStrength}% \n{frequency} GHz\n󰇚 {bandwidthDownBits}\n󰕒 {bandwidthUpBits}",
+      "format": "{icon}",
+      "format-wifi": "{icon}",
+      "format-ethernet": "{icon}",
+      "format-disconnected": "{icon}",
+      "tooltip-format-wifi": "{essid}\n{signalStrength}%\n󰇚 {bandwidthDownBits}\n󰕒 {bandwidthUpBits}",
       "tooltip-format-ethernet": "{ifname}\n󰇚 {bandwidthDownBits} \n󰕒 {bandwidthUpBits}",
-      "format-icons": ["󰤫", "󰤟", "󰤢", "󰤥", "󰤨"],
-      "states": {
-        "normal": 25,
-      },
+      "format-icons": [
+        "󰤫",
+        "󰤟",
+        "󰤢",
+        "󰤥",
+        "󰤨"
+      ],
     },
-
     "hyprland/submap": {
       "always-on": true,
       "default-submap": "",
       "format": "{}",
       "tooltip": false,
     },
-
     "hyprland/window": {
       "format": "{title}",
       "max-length": 48,
@@ -137,7 +176,6 @@
       "icon": true,
       "icon-size": 18,
     },
-
     "hyprland/workspaces": {
       "disable-scroll-wraparound": true,
       "smooth-scrolling-threshold": 4,
@@ -159,7 +197,6 @@
         "lock": "",
       },
     },
-
     "pulseaudio#output": {
       "format": "{icon} {volume}%",
       "format-bluetooth": "{icon} {volume}%",
@@ -171,7 +208,10 @@
         "phone": "",
         "portable": "",
         "car": "",
-        "default": ["", ""],
+        "default": [
+          "",
+          ""
+        ],
       },
       "on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
       "on-click-right": "kitty -e wiremix",
@@ -180,7 +220,6 @@
       "tooltip": true,
       "scroll-step": 4,
     },
-
     "pulseaudio#input": {
       "format": " {format_source}%",
       "format-source": "{volume}",
@@ -193,38 +232,35 @@
       "tooltip-format": "{source_desc}",
       "scroll-step": 4,
     },
-
     "tray": {
       "icon-size": 18,
       "spacing": 8,
       "max-items": 1,
     },
-
     "custom/spacer1": {
       "format": "",
       "tooltip": false,
     },
-
     "custom/spacer2": {
       "format": "",
       "tooltip": false,
     },
-
     "custom/spacer3": {
       "format": "",
       "tooltip": false,
     },
-
     "custom/spacer4": {
       "format": "",
       "tooltip": false,
     },
-
+    "custom/spacer7": {
+      "format": "",
+      "tooltip": false,
+    },
     "custom/trayicon": {
       "format": "ᗧ ",
       "tooltip": false,
     },
-
     "custom/arch": {
       "format": "",
       "tooltip": false,

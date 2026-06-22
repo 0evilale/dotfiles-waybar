@@ -107,7 +107,8 @@
 #waybar.main #traym,
 #waybar.main #window,
 #waybar.main #disk,
-#custom-timer {
+#custom-timer,
+#waybar.main #custom-sys-icon {
     padding-left: 8pt;
     padding-right: 8pt;
 }
@@ -152,13 +153,13 @@
 
 #waybar.main #custom-weather {
     color: @window;
-    background: @background2;
+    background: @background1;
 }
 
 #waybar.main #clock,
 #custom-timer {
     color: @date;
-    background: @background1;
+    background: @background2;
 }
 
 #waybar.main #window {
@@ -352,7 +353,8 @@
 #waybar.main #custom-spacer3,
 #waybar.main #custom-spacer4,
 #waybar.main #custom-spacer5,
-#waybar.main #custom-spacer6 {
+#waybar.main #custom-spacer6,
+#waybar.main #custom-spacer7 {
     font-size: 16pt;
     font-weight: bold;
     color: transparent;
@@ -433,6 +435,16 @@
     );
 }
 
+#waybar.main #custom-spacer7 {
+    background-image: linear-gradient(
+        63.435deg,
+        @background2 47.5%,
+        @sepepator 47.6%,
+        @sepepator 52.4%,
+        @background1 52.5%
+    );
+}
+
 /* }}} */
 
 /* Custom tray icon */
@@ -468,6 +480,16 @@ tooltip {
     font-weight: 500;
     font-family: "JetBrains Mono Nerd Font";
     color: #cdd6f4;
+}
+
+#waybar.main #custom-sys-icon {
+    color: @performance;
+    background: @background1;
+}
+
+.sys-group-item {
+    padding-left: 4pt;
+    padding-right: 4pt;
 }
 
 #waybar.main #tray menu {
