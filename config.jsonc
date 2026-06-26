@@ -17,8 +17,6 @@
     ],
     "modules-right": [
       "custom/spacer1",
-      "cpu",
-      "memory#ram",
       "group/sys-drawer",
       "custom/spacer2",
       "group/pulseaudio-drawer",
@@ -64,9 +62,10 @@
       "orientation": "inherit",
       "drawer": {
         "transition-duration": 600,
+        "click-to-reveal": false,
         "children-class": "sys-group-item"
       },
-      "modules": ["custom/sys-icon", "temperature", "network"]
+      "modules": ["cpu","memory#ram","temperature", "network"]
     },
 
     "group/pulseaudio-drawer": {
