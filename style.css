@@ -1,22 +1,9 @@
 /* vim:fileencoding=utf-8:foldmethod=ft=css
 */
 
-/* Define colors */
+/* Theme colors auto-generated from Omarchy's active theme */
 /* {{{ */
-@define-color background1 rgba(32, 32, 48, 0.85);
-@define-color background2 rgba(21, 21, 32, 0.85);
-@define-color sepepator #313244;
-@define-color warning #f38ba8;
-@define-color caution #45475a;
-@define-color performance #f5c2e7;
-@define-color audio #cba6f7;
-@define-color misc #94e2d5;
-@define-color date #a6e3a1;
-@define-color work #b4befe;
-@define-color window #b4befe;
-@define-color resize #eba0ac;
-@define-color process #89b4fa;
-@define-color text #000000;
+@import url("colors.css");
 /* }}} */
 
 /* Reset all styles */
@@ -278,7 +265,7 @@
 }
 
 #waybar.main #workspaces button {
-    color: #45475a;
+    color: @caution;
     background: transparent;
     border: 1.5px solid transparent;
     padding-left: 4pt;
@@ -479,7 +466,7 @@ tooltip {
     border-radius: 8px;
     font-weight: 500;
     font-family: "JetBrains Mono Nerd Font";
-    color: #cdd6f4;
+    color: @text;
 }
 
 #waybar.main #custom-sys-icon {
@@ -497,7 +484,7 @@ tooltip {
     background: @background2;
     border: 3px solid @caution;
     border-radius: 8px;
-    color: #cdd6f4;
+    color: @text;
 }
 
 #custom-cava {
